@@ -1,16 +1,13 @@
 'use strict';
 
-const camping = require("./camping");
-const reserve = require("./reserve");
-
 module.exports =(sequelize, DataTypes) => { 
-    const user = sequelize.define(
-    'user',
+    const User = sequelize.define(
+    'User',
     {
-        prenom : {
+        first_name : {
            type  : DataTypes.STRING
         },
-        nom : {
+        last_name : {
             type : DataTypes.STRING
         },
         email : {
@@ -26,10 +23,8 @@ module.exports =(sequelize, DataTypes) => {
     }, 
     {
         timestamps : false,
-    })
-
-    user.belongsToMany(camping, { through: 'user_camping' });
-    user.belongsToMany(reserve, { through: 'user_reserve' });
-
-return user
+        underscored : true 
+    }
+)
+return User
 }
