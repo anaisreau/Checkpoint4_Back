@@ -13,6 +13,7 @@ app.use(cors())
 app.use(bodyparser.json())
 
 require('./routes/reserve')(app)
+
 const Users = require('./routes/user')
 app.use('/user', Users)
 
